@@ -5,7 +5,6 @@ import os
 import glob
 import natsort
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
 def get_files(pattern):
