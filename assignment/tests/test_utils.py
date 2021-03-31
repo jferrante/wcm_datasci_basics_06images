@@ -19,5 +19,23 @@ def test_find_middle_odd():
     assert output == mid
 
 def test_realign_max():
+    d1 = np.arrange(9)
+    d2 = np.arrange(6)
+    d1 = d1 * d1[::-1]
+    d2 = d2 * d2[::-1]
+    true_shift = np.array([0,2])
+    test_df = pd.DataFrame([d1,d2]).filena(0)
+    test_df = test_df.T
+    d, shifts = realign_data(test_df, "max")
+    np.testing.assert_array_equal(true_shift,shifts)
 
-    assert
+def test_realign_center():
+    d1 = np.arrange(9)
+    d2 = np.arrange(5)
+    d1 = d1 * d1[::-1]
+    d2 = d2 * d2[::-1]
+    true_shift = np.array([0,2])
+    test_df = pd.DataFrame([d1,d2]).filena(0)
+    test_df = test_df.T
+    d, shifts = realign_data(test_df, "center")
+    np.testing.assert_array_equal(true_shift,shifts)

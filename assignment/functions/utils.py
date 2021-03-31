@@ -56,9 +56,8 @@ def realign_data(in_data, align):
             shifts[column] = pdiff
         elif align == "center":
             # Write the alignment code here, replacing peak with the center that you found (mid_longest).
-            middle = find_middle(in_data[column].values)
+            middle = find_middle(in_data.index[in_data[column]!=0].values)
             mdiff = mid_longest - middle
             d[column] = in_data[column].shift(periods=mdiff, fill_value=0)
-            # assert np.argmax(d[column]) == mid_longest
             shifts[column] = mdiff
-        return d, shifts
+    return d, shifts
